@@ -7,7 +7,7 @@
  *   WA_ACCESS_TOKEN, WA_PHONE_NUMBER_ID (required)
  *   TEST_WHATSAPP_TO — recipient E.164 without + or with + (required)
  *   WA_CATALOG_ID — OR WA_BUSINESS_ACCOUNT_ID for GET .../product_catalogs
- *   TEST_PRODUCT_RETAILER_ID — optional; defaults to first product in aura-sales-closer/catalog.json (or root catalog.json)
+ *   TEST_PRODUCT_RETAILER_ID — optional; defaults to first wa_product_id / retailer id in aura-sales-closer/catalog.json (or root)
  *
  * Run from repo root:
  *   node scripts/test-whatsapp-product-message.js
@@ -41,6 +41,7 @@ function mapCatalogProductToRetailerId(product) {
     return null;
   }
   const explicit =
+    product.wa_product_id ??
     product.wa_product_retailer_id ??
     product.product_retailer_id ??
     product.retailer_id ??
