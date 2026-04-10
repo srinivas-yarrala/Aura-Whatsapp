@@ -12,6 +12,7 @@
   "products": [
     {
       "id": "silk-evening-gown-01",
+      "wa_product_retailer_id": "silk-evening-gown-01",
       "name": "Midnight Silk Evening Gown",
       "category": "Evening",
       "description": "Floor-length bias-cut silk gown with draped back. Limited seasonal run. Ideal for formal events, prom, and wedding guest dressing.",
@@ -19,7 +20,7 @@
       "priceInr": 189000,
       "sizes": ["XS", "S", "M", "L"],
       "colors": ["Midnight Navy", "Champagne"],
-      "image_url": "https://picsum.photos/seed/silk-evening-gown-01/400/600"
+      "image_url": "https://res.cloudinary.com/dccaatr4x/image/upload/v1775824893/pexels-spiffy-23256226-14604107_w3uxfq.jpg"
     },
     {
       "id": "cashmere-overcoat-02",
@@ -30,7 +31,7 @@
       "priceInr": 142000,
       "sizes": ["S", "M", "L", "XL"],
       "colors": ["Camel", "Graphite"],
-      "image_url": "https://picsum.photos/seed/cashmere-overcoat-02/400/600"
+      "image_url": "https://res.cloudinary.com/dccaatr4x/image/upload/v1775824893/pexels-volodymyr-206548298-15322315_ibaxmv.jpg"
     },
     {
       "id": "tailored-trousers-03",
@@ -41,7 +42,7 @@
       "priceInr": 48500,
       "sizes": ["24", "26", "28", "30", "32", "34"],
       "colors": ["Charcoal", "Black", "Warm Grey"],
-      "image_url": "https://picsum.photos/seed/tailored-trousers-03/400/600"
+      "image_url": "https://res.cloudinary.com/dccaatr4x/image/upload/v1775824893/pexels-rajeshverma-13057800_kom99u.jpg"
     },
     {
       "id": "suede-loafer-04",
@@ -52,7 +53,73 @@
       "priceInr": 62000,
       "sizes": ["EU 39–46"],
       "colors": ["Espresso", "Stone"],
-      "image_url": "https://picsum.photos/seed/suede-loafer-04/400/600"
+      "image_url": "https://res.cloudinary.com/dccaatr4x/image/upload/v1775824893/pexels-rajeshverma-13057772_fnqgjt.jpg"
+    },
+    {
+      "id": "structured-wool-blazer-05",
+      "name": "Structured Italian Wool Blazer",
+      "category": "Tailoring",
+      "description": "Single-breasted peak lapel, canvassed chest, horn buttons. Sharp for work travel and evening pairings.",
+      "stylist_note": "Position as the tailored anchor piece; mention canvassing and peak lapel for authority without stiffness.",
+      "priceInr": 98500,
+      "sizes": ["36", "38", "40", "42", "44"],
+      "colors": ["Navy", "Charcoal"],
+      "image_url": "https://res.cloudinary.com/dccaatr4x/image/upload/v1775824893/pexels-marcus-queiroga-silva-86421404-19921436_yq8etn.jpg"
+    },
+    {
+      "id": "handloom-kurta-set-06",
+      "name": "Handloom Silk Kurta Set",
+      "category": "Evening",
+      "description": "Traditional kurta with coordinated dupatta and tailored trousers. Artisan weave, occasion-ready.",
+      "stylist_note": "Keywords: Ethnic, Kurta, Occasion. Lead with craft and ease of full set styling for weddings and celebrations.",
+      "priceInr": 76500,
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["Ivory", "Emerald", "Wine"],
+      "image_url": "https://res.cloudinary.com/dccaatr4x/image/upload/v1775824892/pexels-rajeshverma-13057625_ptmxkf.jpg"
+    },
+    {
+      "id": "resort-linen-shirt-07",
+      "name": "Relaxed Resort Linen Shirt",
+      "category": "Tailoring",
+      "description": "Breathable European linen, camp collar, mother-of-pearl buttons. Casual everyday and warm-climate travel.",
+      "stylist_note": "Keywords: Casual, Everyday, Travel. Unlined linen for ease; pair mentally with tailored trousers or the suede loafer.",
+      "priceInr": 34200,
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": ["White", "Sand", "Sage"],
+      "image_url": "https://res.cloudinary.com/dccaatr4x/image/upload/v1775824892/pexels-abubakar-mamman-2148132108-36631437_h5lscd.jpg"
+    },
+    {
+      "id": "sculptural-cocktail-dress-08",
+      "name": "Sculptural Cocktail Dress",
+      "category": "Evening",
+      "description": "Architectural seaming, midi length, party and formal-ready. Limited drop.",
+      "stylist_note": "Keywords: Party, Formal, Gala. Emphasize silhouette and occasion versatility; scarcity from limited drop.",
+      "priceInr": 128000,
+      "sizes": ["XS", "S", "M", "L"],
+      "colors": ["Black", "Bordeaux"],
+      "image_url": "https://res.cloudinary.com/dccaatr4x/image/upload/v1775824892/pexels-high-rollick-studio-553091901-17471951_iwora1.jpg"
+    },
+    {
+      "id": "silk-slip-midi-09",
+      "name": "Bias-Cut Silk Slip Midi",
+      "category": "Evening",
+      "description": "Fluid sand-washed silk, adjustable straps, ideal for layering or standalone evening looks.",
+      "stylist_note": "Bias drape reads luxe and easy; mention layering under the wool blazer for transitional dressing.",
+      "priceInr": 89500,
+      "sizes": ["XS", "S", "M", "L"],
+      "colors": ["Champagne", "Graphite"],
+      "image_url": "https://res.cloudinary.com/dccaatr4x/image/upload/v1775824892/pexels-marceloverfe-19034219_axkovj.jpg"
+    },
+    {
+      "id": "merino-rib-dress-10",
+      "name": "Merino Rib Knit Column Dress",
+      "category": "Evening",
+      "description": "Fine-gauge merino, body-skimming column, four-season knit dress for gallery openings and dinner.",
+      "stylist_note": "Knit dress bridges casual polish and evening; merino reads refined, not loungewear.",
+      "priceInr": 71200,
+      "sizes": ["XS", "S", "M", "L"],
+      "colors": ["Camel", "Ink"],
+      "image_url": "https://res.cloudinary.com/dccaatr4x/image/upload/v1775824892/pexels-marceloverfe-19895964_mfkbe1.jpg"
     }
   ]
 }
