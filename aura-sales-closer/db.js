@@ -41,6 +41,20 @@ function createDb(dbPath) {
       created_at INTEGER NOT NULL
     );
     CREATE INDEX IF NOT EXISTS idx_leads_wa ON leads(wa_id);
+
+    CREATE TABLE IF NOT EXISTS messages (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      phone_number TEXT NOT NULL,
+      role TEXT NOT NULL CHECK(role IN ('user', 'model')),
+      message_text TEXT,
+      timestamp INTEGER NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_messages_phone_time ON messages(phone_number, timestamp);
+
+    CREATE TABLE IF NOT EXISTS media_cache (
+      image_url TEXT PRIMARY KEY,
+      media_id TEXT NOT NULL
+    );
   `);
 
   const claimStmt = db.prepare(
@@ -55,6 +69,27 @@ function createDb(dbPath) {
      VALUES (@wa_id, @email, @raw_snippet, @created_at)`,
   );
   const pruneStmt = db.prepare('DELETE FROM processed_messages WHERE processed_at < ?');
+
+  const insertMessageStmt = db.prepare(
+    `INSERT INTO messages (phone_number, role, message_text, timestamp)
+     VALUES (@phone_number, @role, @message_text, @timestamp)`,
+  );
+  const fetchRecentStmt = db.prepare(
+    `SELECT role, message_text, timestamp FROM messages
+     WHERE phone_number = @phone_number
+     ORDER BY timestamp DESC, id DESC
+     LIMIT @limit`,
+  );
+  const lastUserTsStmt = db.prepare(
+    `SELECT MAX(timestamp) AS ts FROM messages
+     WHERE phone_number = ? AND role = 'user'`,
+  );
+  const getMediaStmt = db.prepare(
+    'SELECT media_id FROM media_cache WHERE image_url = ?',
+  );
+  const upsertMediaStmt = db.prepare(
+    `INSERT OR REPLACE INTO media_cache (image_url, media_id) VALUES (?, ?)`,
+  );
 
   function tryClaimMessage(messageId) {
     if (!messageId) {
@@ -87,6 +122,36 @@ function createDb(dbPath) {
     });
   }
 
+  function insertChatMessage(phoneNumber, role, messageText, timestampMs) {
+    insertMessageStmt.run({
+      phone_number: phoneNumber,
+      role,
+      message_text: messageText ?? null,
+      timestamp: timestampMs,
+    });
+  }
+
+  /** Most recent first (DESC). */
+  function fetchRecentChatMessages(phoneNumber, limit) {
+    const rows = fetchRecentStmt.all({ phone_number: phoneNumber, limit });
+    return rows.reverse();
+  }
+
+  /** Latest inbound user message time (ms), or null if none. Call before inserting the current user row. */
+  function getLastUserInboundTimestamp(phoneNumber) {
+    const row = lastUserTsStmt.get(phoneNumber);
+    return row?.ts != null ? row.ts : null;
+  }
+
+  function getCachedMediaId(imageUrl) {
+    const row = getMediaStmt.get(imageUrl);
+    return row?.media_id || null;
+  }
+
+  function upsertMediaCache(imageUrl, mediaId) {
+    upsertMediaStmt.run(imageUrl, mediaId);
+  }
+
   function pruneProcessed(maxAgeMs = DEFAULT_PRUNE_MS) {
     const cutoff = Date.now() - maxAgeMs;
     pruneStmt.run(cutoff);
@@ -104,6 +169,11 @@ function createDb(dbPath) {
     tryClaimMessage,
     logMessage,
     insertLead,
+    insertChatMessage,
+    fetchRecentChatMessages,
+    getLastUserInboundTimestamp,
+    getCachedMediaId,
+    upsertMediaCache,
     pruneProcessed,
     ping,
     close,

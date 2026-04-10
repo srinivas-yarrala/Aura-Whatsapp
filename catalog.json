@@ -14,37 +14,45 @@
       "id": "silk-evening-gown-01",
       "name": "Midnight Silk Evening Gown",
       "category": "Evening",
-      "description": "Floor-length bias-cut silk gown with draped back. Limited seasonal run.",
+      "description": "Floor-length bias-cut silk gown with draped back. Limited seasonal run. Ideal for formal events, prom, and wedding guest dressing.",
+      "stylist_note": "Keywords: Formal, Prom, Wedding guest. Lead with black-tie and gala moments; mention the bias drape for movement and the limited seasonal run for urgency.",
       "priceInr": 189000,
       "sizes": ["XS", "S", "M", "L"],
-      "colors": ["Midnight Navy", "Champagne"]
+      "colors": ["Midnight Navy", "Champagne"],
+      "image_url": "https://picsum.photos/seed/silk-evening-gown-01/400/600"
     },
     {
       "id": "cashmere-overcoat-02",
       "name": "Double-Faced Cashmere Overcoat",
       "category": "Outerwear",
       "description": "Hand-finished lapels, horn buttons, full lining optional on request.",
+      "stylist_note": "Position as a decade piece for travel and city winters; optional lining is a nice bespoke touch to mention.",
       "priceInr": 142000,
       "sizes": ["S", "M", "L", "XL"],
-      "colors": ["Camel", "Graphite"]
+      "colors": ["Camel", "Graphite"],
+      "image_url": "https://picsum.photos/seed/cashmere-overcoat-02/400/600"
     },
     {
       "id": "tailored-trousers-03",
       "name": "High-Rise Tailored Wool Trousers",
       "category": "Tailoring",
       "description": "Italian wool, pressed crease, unfinished hem for bespoke length.",
+      "stylist_note": "Highlight Italian wool and the unfinished hem for tailoring; pair mentally with the overcoat for a full look.",
       "priceInr": 48500,
       "sizes": ["24", "26", "28", "30", "32", "34"],
-      "colors": ["Charcoal", "Black", "Warm Grey"]
+      "colors": ["Charcoal", "Black", "Warm Grey"],
+      "image_url": "https://picsum.photos/seed/tailored-trousers-03/400/600"
     },
     {
       "id": "suede-loafer-04",
       "name": "Hand-Stitched Suede Loafer",
       "category": "Footwear",
-      "description": "Unlined suede, leather sole, made in small batches.",
+      "description": "Unlined suede, leather sole, made in small batches. Summer-friendly, casual, handmade construction.",
+      "stylist_note": "Keywords: Summer, Casual, Handmade. Unlined suede = soft and travel-friendly; small batches support exclusivity without sounding pushy.",
       "priceInr": 62000,
       "sizes": ["EU 39–46"],
-      "colors": ["Espresso", "Stone"]
+      "colors": ["Espresso", "Stone"],
+      "image_url": "https://picsum.photos/seed/suede-loafer-04/400/600"
     }
   ]
 }

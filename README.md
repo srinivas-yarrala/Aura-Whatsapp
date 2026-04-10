@@ -2,7 +2,7 @@
 
 Node.js + Express webhook server that powers **Aura**, a 24/7 AI stylist for international clients. It uses **Google Gemini** (via `@google/genai`) and the **WhatsApp Cloud API** to send messages.
 
-Production behavior includes **Meta webhook signature verification**, **fast HTTP 200 acknowledgements** with **async processing**, **SQLite-backed message deduplication**, **conversation and lead logging**, and **graceful shutdown**.
+Production behavior includes **Meta webhook signature verification**, **fast HTTP 200 acknowledgements** with **async processing**, **SQLite-backed message deduplication**, **conversation memory** (last 10 turns per phone), **lightweight catalog RAG** (top 3 products per message), **24-hour re-engagement template** (optional), **WhatsApp media-ID caching** for catalog images, **voice note** handling (audio → Gemini), **structured JSON replies** (text / image / reply buttons), **conversation and lead logging**, and **graceful shutdown**.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ For local tunnel testing without configuring signatures, you can set `SKIP_WEBHO
 | Variable | Description |
 |----------|-------------|
 | `GEMINI_API_KEY` | Google AI (Gemini) API key |
-| `GEMINI_MODEL` | Optional; default `gemini-2.5-flash` |
+| `GEMINI_MODEL` | Optional; default `gemini-3-flash-preview` |
 | `WA_PHONE_NUMBER_ID` | WhatsApp Cloud API phone number ID |
 | `WA_ACCESS_TOKEN` | WhatsApp Cloud API access token |
 | `VERIFY_TOKEN` | Same string you enter in Meta’s webhook verify token field |
@@ -46,13 +46,15 @@ For local tunnel testing without configuring signatures, you can set `SKIP_WEBHO
 | `SKIP_WEBHOOK_SIGNATURE` | Dev only: `1` or `true` to skip signature checks |
 | `INR_PER_USD` | Optional; default `83` for INR → USD quotes |
 | `DEDUPE_PRUNE_MS` | Optional; how long dedupe keys are kept (ms); default 7 days |
+| `WA_REENGAGEMENT_TEMPLATE` | Optional; default `reengagement_ping` — sent instead of Gemini if the customer’s **last user** message was **>24h** ago (must be an **approved** WhatsApp template). Alias: `WA_REENGAGEMENT_TEMPLATES` |
+| `WA_TEMPLATE_LANG` | Optional; template language code, default `en` (often `en_US` in Meta) |
 
 ## Webhook URLs (Meta)
 
 - **Callback URL:** `https://<your-host>/webhook`
 - **Verify token:** must match `VERIFY_TOKEN` in `.env`
 
-Subscribe to **`messages`** (and optionally other fields you need) for the WhatsApp Business Account.
+Subscribe to **`messages`** (and optionally other fields you need) for the WhatsApp Business Account. Create and approve a template named **`reengagement_ping`** (or set `WA_REENGAGEMENT_TEMPLATE`) if you use the 24h branch.
 
 ## Health checks
 
@@ -66,7 +68,9 @@ Point your host’s health check at `/health` if supported.
 SQLite stores:
 
 - **processed message IDs** — avoids double replies when Meta retries webhooks
-- **conversation log** — inbound/outbound text (truncated for storage)
+- **messages** — `phone_number`, `role` (`user` \| `model`), `message_text`, `timestamp` (used for Gemini context and the 24h rule)
+- **media_cache** — maps catalog `image_url` → WhatsApp **media id** after upload to Meta
+- **conversation log** — inbound/outbound audit lines (truncated)
 - **leads** — rows created when an email address appears in a customer message
 
 The `data/` directory is gitignored. On **Render** (or similar), attach a **persistent disk** and set `DATABASE_PATH` to a path on that disk if you need the database to survive deploys and restarts.
