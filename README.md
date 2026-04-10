@@ -79,7 +79,7 @@ For **multiple server instances**, a single SQLite file is not sufficient; you w
 2. In [Render](https://render.com/), create a **Web Service** and connect the repo.
 3. **Runtime:** Node 20+
 4. **Build command:** `npm install` (or leave default if Render auto-detects)
-5. **Start command:** `npm start` (equivalent to `node server.js`; `Procfile` also defines `web: node server.js` for compatibility).
+5. **Start command:** **`npm start`** (runs `node server.js` from `package.json`). Do **not** use `node start`—that looks for a missing file named `start` and fails. Alternatively: `node server.js`. The repo includes **`render.yaml`** with the correct `startCommand` if you use a Render Blueprint.
 6. Under **Environment**, set `NODE_ENV=production` and add all variables from `.env.example`, including **`META_APP_SECRET`** (never commit real `.env`).
 7. Optional: add a **persistent disk** and set `DATABASE_PATH` to a file on that disk.
 8. Use your Render URL as the Meta webhook **Callback URL**, e.g. `https://aura-whatsapp-sales.onrender.com/webhook`.

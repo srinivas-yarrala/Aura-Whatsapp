@@ -1,0 +1,12 @@
+# Optional: connect this repo via Render Blueprint, or set the same values manually in the dashboard.
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: aura-whatsapp-sales
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
