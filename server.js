@@ -17,13 +17,15 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3-flash-preview';
 const WA_PHONE_NUMBER_ID = process.env.WA_PHONE_NUMBER_ID;
 const WA_ACCESS_TOKEN = process.env.WA_ACCESS_TOKEN;
-const META_APP_SECRET = process.env.META_APP_SECRET || '';
+const META_APP_SECRET = String(process.env.META_APP_SECRET || '').trim();
 const INR_PER_USD = Number(process.env.INR_PER_USD) || 83;
 const SKIP_WEBHOOK_SIGNATURE =
   process.env.SKIP_WEBHOOK_SIGNATURE === '1' ||
   process.env.SKIP_WEBHOOK_SIGNATURE === 'true';
 const LEAD_NOTIFY_WEBHOOK_URL = process.env.LEAD_NOTIFY_WEBHOOK_URL || '';
-const DATABASE_PATH = process.env.DATABASE_PATH || path.join(__dirname, 'data', 'aura.db');
+const DATABASE_PATH =
+  (process.env.DATABASE_PATH && String(process.env.DATABASE_PATH).trim()) ||
+  path.join(__dirname, 'data', 'aura.db');
 const WA_REENGAGEMENT_TEMPLATE =
   process.env.WA_REENGAGEMENT_TEMPLATE ||
   process.env.WA_REENGAGEMENT_TEMPLATES ||
@@ -105,6 +107,8 @@ function log(level, message, meta) {
     console.log(line);
   }
 }
+
+log('info', 'SQLite initialized', { path: DATABASE_PATH });
 
 let warnedMissingMetaSecret = false;
 function verifyWebhookSignature(req) {
