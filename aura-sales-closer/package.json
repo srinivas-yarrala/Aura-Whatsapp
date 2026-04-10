@@ -1,0 +1,21 @@
+{
+  "name": "aura-sales-closer",
+  "version": "1.0.0",
+  "description": "24/7 AI Sales Agent for WhatsApp (production-ready)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.0",
+    "axios": "^1.7.9",
+    "better-sqlite3": "^11.8.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}

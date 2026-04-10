@@ -1,0 +1,50 @@
+{
+  "brand": "Aura Atelier",
+  "currency": "INR",
+  "inrPerUsd": 83,
+  "shipping": {
+    "regions": ["United States", "Canada", "UK", "EU", "UAE", "Singapore", "Australia"],
+    "notes": "International express shipping quoted at checkout. Typical US delivery: 5–10 business days after dispatch. Duties/taxes may apply per destination.",
+    "freeShippingInrThreshold": 75000,
+    "standardInternationalInr": 4500,
+    "expressInternationalInr": 8500
+  },
+  "products": [
+    {
+      "id": "silk-evening-gown-01",
+      "name": "Midnight Silk Evening Gown",
+      "category": "Evening",
+      "description": "Floor-length bias-cut silk gown with draped back. Limited seasonal run.",
+      "priceInr": 189000,
+      "sizes": ["XS", "S", "M", "L"],
+      "colors": ["Midnight Navy", "Champagne"]
+    },
+    {
+      "id": "cashmere-overcoat-02",
+      "name": "Double-Faced Cashmere Overcoat",
+      "category": "Outerwear",
+      "description": "Hand-finished lapels, horn buttons, full lining optional on request.",
+      "priceInr": 142000,
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["Camel", "Graphite"]
+    },
+    {
+      "id": "tailored-trousers-03",
+      "name": "High-Rise Tailored Wool Trousers",
+      "category": "Tailoring",
+      "description": "Italian wool, pressed crease, unfinished hem for bespoke length.",
+      "priceInr": 48500,
+      "sizes": ["24", "26", "28", "30", "32", "34"],
+      "colors": ["Charcoal", "Black", "Warm Grey"]
+    },
+    {
+      "id": "suede-loafer-04",
+      "name": "Hand-Stitched Suede Loafer",
+      "category": "Footwear",
+      "description": "Unlined suede, leather sole, made in small batches.",
+      "priceInr": 62000,
+      "sizes": ["EU 39–46"],
+      "colors": ["Espresso", "Stone"]
+    }
+  ]
+}

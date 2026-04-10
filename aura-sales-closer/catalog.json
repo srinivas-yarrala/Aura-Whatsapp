@@ -1,0 +1,32 @@
+{
+  "brand": "Aura Boutique",
+  "currency": "INR",
+  "inrPerUsd": 83,
+  "shipping": {
+    "regions": ["United States", "Canada", "UK", "EU", "UAE", "Singapore", "Australia"],
+    "notes": "International shipping: typical US delivery 7–10 business days after dispatch. Duties and taxes may apply. Product lines may list carrier-specific US timelines.",
+    "freeShippingInrThreshold": 50000,
+    "standardInternationalInr": 3500,
+    "expressInternationalInr": 7500
+  },
+  "products": [
+    {
+      "id": "silk-01",
+      "name": "Emerald Silk Saree",
+      "category": "Saree",
+      "description": "Hand-loomed with gold zari borders. Perfect for weddings.",
+      "priceInr": 12500,
+      "material": "Pure Mulberry Silk",
+      "usShippingNote": "7–9 days via FedEx"
+    },
+    {
+      "id": "linen-02",
+      "name": "Ivory Linen Kurta",
+      "category": "Kurta",
+      "description": "Breathable summer wear with intricate thread work.",
+      "priceInr": 4500,
+      "material": "Premium Organic Linen",
+      "usShippingNote": "~10 days via DHL"
+    }
+  ]
+}

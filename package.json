@@ -1,0 +1,28 @@
+{
+  "name": "aura-whatsapp-sales",
+  "version": "1.0.0",
+  "description": "Aura — 24/7 WhatsApp sales closer for luxury fashion (Gemini + Meta Cloud API)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "whatsapp",
+    "gemini",
+    "express",
+    "sales-bot"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^1.0.0",
+    "axios": "^1.7.9",
+    "better-sqlite3": "^11.8.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
